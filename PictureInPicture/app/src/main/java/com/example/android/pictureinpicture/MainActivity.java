@@ -188,13 +188,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onPause() {
+        boolean pipmode = this.isInPictureInPictureMode();
+    }
+    
+    @Override
     protected void onStop() {
         // On entering Picture-in-Picture mode, onPause is called, but not onStop.
         // For this reason, this is the place where we should pause the video playback.
         mMovieView.pause();
         super.onStop();
     }
-
+    
+    
+    
     @Override
     protected void onRestart() {
         super.onRestart();
